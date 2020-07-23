@@ -24,7 +24,8 @@ public class MyStack {
 
         // TODO: Please push the value into the storage here.
         // <--start
-
+        this.storage[count] = value;
+        count++;
         // --end-->
     }
 
@@ -37,7 +38,10 @@ public class MyStack {
         //  IMPORTANT: You SHOULD NOT USE COLLECTIONS (such as List<T>) OTHER THAN ARRAY.
         //
         // <--start
-
+        int[] newArray = new int[newCapacity];
+        System.arraycopy(this.storage, 0, newArray, 0, this.storage.length);
+        this.storage = newArray;
+        this.capacity = newCapacity;
         // --end-->
     }
 
@@ -57,7 +61,10 @@ public class MyStack {
         //  Please pop one element from the array. You should update the `count` field
         //  as well.
         // <--start
-
+        while (count > 0) {
+            count--;
+            return this.storage[count];
+        }
         // --end-->
 
         throw new UnsupportedOperationException("Stack is empty.");
